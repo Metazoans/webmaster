@@ -13,7 +13,6 @@ public class Test {
 		// 짧은 테스트용
 		Scanner sc = new Scanner(System.in);
 		
-		System.out.println("git test push");
 		
 		sc.close();
 	}
