@@ -36,12 +36,14 @@ public class MemberListServlet extends HttpServlet {
 		MemberMapper dao = sqlSession.getMapper(MemberMapper.class);
 		
 		List<Member> result = dao.members();
+		for(Member member : result) {
+			out.print(member.toString() + "<br>");
+		}
+		out.print("<br><hr /><br>");
 		
-		
-		out.print("<table >");
+		out.print("<table border=1, style='border-collapse:collapse', width=400,height=300>");
 		out.print("<tr> <th>id</th> <th>password</th> <th>name</th> <th>phone</th> <th>respons</th> <th>date</th> </tr>");
 		for(Member member : result) {
-			//out.print(member.toString() + "<br>");
 			out.print("<tr>");
 			
 			out.print("<td>");
