@@ -13,19 +13,7 @@ public class Test {
 		// 짧은 테스트용
 		Scanner sc = new Scanner(System.in);
 		
-		String s = "h";
-		int num;
-		
-		try {
-			if(Integer.parseInt(s) > 0) {
-				num = Integer.parseInt(s);
-				System.out.println(num);
-			}
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		
-		System.out.println("null");
+		System.out.println("git test push");
 		
 		sc.close();
 	}
