@@ -19,6 +19,9 @@ import com.yedam.vo.Member;
 /**
  * Servlet implementation class MemberListServlet
  */
+
+// IOC (제어의 역전)
+// 객체 생성 -> init() -> service() -> destroy() : 서블릿의 생명주기
 @WebServlet("/MemberListServlet")
 public class MemberListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -36,47 +39,25 @@ public class MemberListServlet extends HttpServlet {
 		MemberMapper dao = sqlSession.getMapper(MemberMapper.class);
 		
 		List<Member> result = dao.members();
-		for(Member member : result) {
-			out.print(member.toString() + "<br>");
-		}
-		out.print("<br><hr /><br>");
 		
-		out.print("<table border=1, style='border-collapse:collapse', width=400,height=300>");
-		out.print("<tr> <th>id</th> <th>password</th> <th>name</th> <th>phone</th> <th>respons</th> <th>date</th> </tr>");
+		String str = "<table border=1, style='border-collapse:collapse', width=1000,height=300>";
+		str += "<tr> <th>id</th> <th>password</th> <th>name</th> <th>phone</th> <th>respons</th> <th>date</th> </tr>";
 		for(Member member : result) {
-			out.print("<tr>");
-			
-			out.print("<td>");
-			out.print(member.getMemberId());
-			out.print("</td>");
-			
-			out.print("<td>");
-			out.print(member.getPassword());
-			out.print("</td>");
-			
-			out.print("<td>");
-			out.print(member.getMemberName());
-			out.print("</td>");
-			
-			out.print("<td>");
-			out.print(member.getPhone());
-			out.print("</td>");
-			
-			out.print("<td>");
-			out.print(member.getResponsibility());
-			out.print("</td>");
-			
-			out.print("<td>");
-			out.print(member.getCreationDate());
-			out.print("</td>");
-			
-			out.print("</tr>");
+			str +="<tr><td><a href='member.action?mid=" + member.getMemberId() +"'>" + member.getMemberId();
+			str += "</a></td><td>" + member.getPassword();
+			str += "</td><td>" + member.getMemberName();
+			str += "</td><td>" + member.getPhone();
+			str += "</td><td>" + member.getResponsibility();
+			str += "</td><td>" + member.getCreationDate() + "</td></tr>";
 		}
-		out.print("</table>");
+		str += "</table>";
+		str += "<a href='./'>첫페이지</a>";
+		out.print(str);
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//doGet(request, response);
+		doGet(request, response);
 	}
 
 }

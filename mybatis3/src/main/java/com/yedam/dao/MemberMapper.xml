@@ -5,7 +5,7 @@
   
 <mapper namespace="com.yedam.dao.MemberMapper">
   <select id="members" resultType="com.yedam.vo.Member">
-    select * from tbl_member
+    select * from tbl_member order by 1
   </select>
   
   <insert id="insertMember" parameterType="com.yedam.vo.Member">
@@ -31,4 +31,15 @@
   	delete from tbl_member
   	where member_id = #{memberId}
   </delete>
+  
+  <select id="selectMember" parameterType="string" resultType="com.yedam.vo.Member">
+  	select member_id
+  		  ,member_name
+  		  ,password
+  		  ,phone
+  		  ,responsibility
+  		  ,creation_date
+	from tbl_member
+	where member_id = #{memberId}
+  </select>
 </mapper>
