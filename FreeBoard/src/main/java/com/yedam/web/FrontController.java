@@ -26,6 +26,8 @@ public class FrontController extends HttpServlet {
 	public void init() throws ServletException {
 		//System.out.println("init호출");
 		map.put("/memberList.do", new MemberListControl());
+		// 회원등록 1)등록화면 2)등록처리
+		map.put("/memberAddForm.do", new MemberAddFormControl());
 		map.put("/memberAdd.do", new MemberAddControl());
 	}
 	
