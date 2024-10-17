@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,12 +24,23 @@ public class FrontController extends HttpServlet {
 	}
 	
 	@Override
-	public void init() throws ServletException {
+	public void init(ServletConfig config) throws ServletException {
 		//System.out.println("init호출");
 		map.put("/memberList.do", new MemberListControl());
 		// 회원등록 1)등록화면 2)등록처리
 		map.put("/memberAddForm.do", new MemberAddFormControl());
 		map.put("/memberAdd.do", new MemberAddControl());
+		
+		// 게시판 관련
+		map.put("/boardList.do", new BoardListControl()); //목록
+		map.put("/board.do", new BoardControl()); //상세
+		// 글등록 (등록화면 -> 등록처리)
+		map.put("/addBoardForm.do", new AddBoardForm());
+		map.put("/addBoard.do", new AddBoardControl());
+		// 글수정 (수정화면 -> 변경처리)
+		map.put("/modifyBoard.do", new ModifyBoardControl());
+		map.put("/deleteBoard.do", new deleteBoardControl());
+		
 	}
 	
 	@Override
