@@ -7,13 +7,25 @@
 
 <%
 	String msg = (String) request.getAttribute("msg");
+	String pg = (String) request.getAttribute("page");
 	BoardVO board = (BoardVO) request.getAttribute("boardvo");
+
+	String sc = (String) request.getAttribute("searchCondition");
+	String kw = (String) request.getAttribute("keyword");
+	kw = kw == null ? "" : kw;
+	
+	//세션 정보
+	String logId = (String) session.getAttribute("logId");
 %>
 <%if(msg != null) { %>
 <p style="color:red;"><%=msg %></p>
 <%} %>
 <form action="modifyBoard.do" method="post">
 	<input type="hidden" name="bno" value="<%=board.getBoardNo() %>">
+	<input type="hidden" name="page" value="<%=pg %>">
+	<input type="hidden" name="searchCondition" value="<%=sc %>">
+	<input type="hidden" name="keyword" value="<%=kw %>">
+	
 	<table class="table">
 		<tr>
 			<th>글번호</th>
@@ -35,7 +47,7 @@
 		</tr>
 		<tr>
 			<td colspan="4" align="center">
-				<input type="submit" value="저장" class="btn btn-success">
+				<input type="submit" value="저장" <%=logId != null && logId.equals(board.getWriter()) ? "" : "disabled" %> class="btn btn-success">
 				<input type="reset" value="취소" class="btn btn-warning">
 			</td>
 		</tr>
@@ -48,6 +60,6 @@
 
 <script>
 	document.querySelector('input[value="취소"]').addEventListener('click', function(e) {
-		location.href = 'board.do?bno=<%=board.getBoardNo() %>';
+		location.href = 'board.do?searchCondition=<%=sc %>&keyword=<%=kw %>&page=<%=pg %>&bno=<%=board.getBoardNo() %>';
 	});
 </script>

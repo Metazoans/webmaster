@@ -11,11 +11,17 @@ import com.yedam.service.BoardService;
 import com.yedam.service.BoardServiceImpl;
 import com.yedam.vo.BoardVO;
 
-public class deleteBoardControl implements Control {
+public class DeleteBoardControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String bno = req.getParameter("bno");
+		String page = req.getParameter("page");
+		String sc = req.getParameter("searchCondition");
+		String kw = req.getParameter("keyword");
+
+		req.setAttribute("searchCondition", sc);
+		req.setAttribute("keyword", kw);
 		
 		BoardService svc = new BoardServiceImpl();
 		
@@ -23,12 +29,17 @@ public class deleteBoardControl implements Control {
 			BoardVO board = svc.searchBoard(Integer.parseInt(bno));
 			
 			req.setAttribute("boardvo", board);
+			req.setAttribute("page", page);
 			req.getRequestDispatcher("WEB-INF/jsp/deleteForm.jsp").forward(req, resp);
 
 			
 		} else if(req.getMethod().equals("POST")) {
 			if(svc.removeBoard(Integer.parseInt(bno))) {
-				resp.sendRedirect("boardList.do");
+				//if(svc.boardList(Integer.parseInt(page)) == null) int pg = Integer.parseInt(page) - 1;
+				String s = "searchCondition=" + sc;
+				s += "&keyword=" + kw;
+				s += "&page=" + page;
+				resp.sendRedirect("boardList.do?" + s);
 			} else {
 				BoardVO board = svc.searchBoard(Integer.parseInt(bno));
 
