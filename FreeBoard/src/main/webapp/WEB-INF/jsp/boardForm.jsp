@@ -4,15 +4,9 @@
 <jsp:include page="../includes/header.jsp"></jsp:include>
 <h3>등록화면(boardForm.jsp)</h3>
 
-<%
-	String msg = (String) request.getAttribute("msg");
-	String logId = (String) session.getAttribute("logId");
-%>
-<%if(msg != null) { %>
-<p style="color:red;"><%=msg %></p>
-<%} %>
+<p style="color:red;">${msg }</p>
 <form action="addBoard.do" method="post">
-	<input class="form-control" type="hidden" name="writer" value="<%=logId %>">
+	<input class="form-control" type="hidden" name="writer" value="${logId }">
 	<table class="table">
 		<tr>
 			<th>제목</th>
@@ -24,7 +18,7 @@
 		</tr>
 		<tr>
 			<th>작성자</th>
-			<td><%=logId %></td>
+			<td>${logId }</td>
 		</tr>
 		<tr>
 			<td colspan="2" align="center">

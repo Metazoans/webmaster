@@ -7,42 +7,30 @@
 <jsp:include page="../includes/header.jsp"></jsp:include>
 <h3>상세페이지(board.jsp)</h3>
 
-<%
-	BoardVO board = (BoardVO) request.getAttribute("boardvo");
-	String pg = (String) request.getAttribute("page");
-	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-	
-	String wdate = sdf.format(board.getUpdateDate());
-	
-	String sc = (String) request.getAttribute("searchCondition");
-	String kw = (String) request.getAttribute("keyword");
-	kw = kw == null ? "" : kw;
-%>
-0
 <table class="table">
 	<tr>
 		<th>글번호</th>
-		<td><%=board.getBoardNo() %></td>
+		<td>${boardvo.boardNo }</td>
 		<th>조회수</th>
-		<td><%=board.getViewCnt() %></td>
+		<td>${boardvo.viewCnt }</td>
 	</tr>
 	<tr>
 		<th>제목</th>
-		<td colspan="3"><%=board.getTitle() %></td>
+		<td colspan="3">${boardvo.title }</td>
 	</tr>
 	<tr>
 		<th>내용</th>
 		<td colspan="3">
-			<textarea readonly rows="4" cols="30" class="form-control"><%=board.getContent() %></textarea>
+			<textarea readonly rows="4" cols="30" class="form-control">${boardvo.content }</textarea>
 		</td>
 	</tr>
 	<tr>
 		<th>작성자</th>
-		<td colspan="3"><%=board.getWriter() %></td>
+		<td colspan="3">${boardvo.writer }</td>
 	</tr>
 	<tr>
 		<th>작성일시</th>
-		<td colspan="3"><%=wdate %></td>
+		<td colspan="3">${boardvo.writeDate }</td>
 	</tr>
 	<tr>
 		<td colspan="4" align="center">
@@ -56,10 +44,10 @@
 
 <script>
 	document.querySelector('input[value="수정"]').addEventListener('click', function(e) {
-		location.href = 'modifyBoard.do?searchCondition=<%=sc %>&keyword=<%=kw %>&page=<%=pg %>&bno=<%=board.getBoardNo() %>';
+		location.href = "modifyBoard.do?searchCondition=" + ${searchCondition } + "&keyword=" + ${keyword } + "&page=" + ${page } + "&bno=" + ${boardvo.boardNo };
 	});
 	
 	document.querySelector('input[value="삭제"]').addEventListener('click', function(e) {
-		location.href = 'deleteBoard.do?searchCondition=<%=sc %>&keyword=<%=kw %>&page=<%=pg %>&bno=<%=board.getBoardNo() %>';
+		location.href = "deleteBoard.do?searchCondition=" + ${searchCondition } + "&keyword=" + ${keyword } + "&page=" + ${page } + "&bno=" + ${boardvo.boardNo };
 	});
 </script>
