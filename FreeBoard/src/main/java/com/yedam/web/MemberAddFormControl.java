@@ -13,7 +13,7 @@ public class MemberAddFormControl implements Control {
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 		// jsp 페이지 open
-		req.getRequestDispatcher("WEB-INF/jsp/memberAddForm.jsp").forward(req, resp);
+		req.getRequestDispatcher("admin/memberAddForm.tiles").forward(req, resp);
 	}
 
 }

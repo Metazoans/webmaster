@@ -5,17 +5,14 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.yedam.common.Control;
 
-public class AddBoardForm implements Control {
+public class JavaScriptCont implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// addBoardForm.do -> boardForm.jsp
-		req.getRequestDispatcher("board/boardForm.tiles").forward(req, resp);
-		
+		req.getRequestDispatcher("etc/javascript.tiles").forward(req, resp);
 	}
 
 }

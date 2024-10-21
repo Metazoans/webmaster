@@ -6,7 +6,9 @@
 <jsp:include page="../includes/header.jsp"></jsp:include>
 <h3>수정화면(modifyForm.jsp)</h3>
 
-<p style="color:red;">${msg }p>
+<c:if test="${msg != null }">
+	<p style="color: red;">${msg }</p>
+</c:if>
 
 <form action="modifyBoard.do" method="post">
 	<input type="hidden" name="bno" value="${boardvo.boardNo }">
@@ -34,8 +36,8 @@
 			<td colspan="3">${boardvo.writer }</td>
 		</tr>
 		<tr>
-			<td colspan="4" align="center"> 
-				<input type="submit" value="저장" <c:set var="optCheck" value="'${logId != null && logId.equals(boardvo.writer) ? '' : 'disabled' }"></c:set> class="btn btn-success">
+			<td colspan="4" align="center">
+				<input type="submit" value="저장" <c:set var="optCheck" value="${logId != null && logId.equals(boardvo.writer) ? '' : 'disabled' }"></c:set>${optCheck } class="btn btn-success">
 				<input type="reset" value="취소" class="btn btn-warning">
 			</td>
 		</tr>
@@ -48,6 +50,6 @@
 
 <script>
 	document.querySelector('input[value="취소"]').addEventListener('click', function(e) {
-		location.href = "board.do?searchCondition=" + ${searchCondition } + "&keyword=" + ${keyword } + "&page=" + ${page } + "&bno=" + ${boardvo.boardNo };
+		location.href = "board.do?searchCondition=${searchCondition }&keyword=${keyword }&page=${page }&bno=${boardvo.boardNo }";
 	});
 </script>

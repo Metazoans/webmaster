@@ -3,8 +3,13 @@
 <%@page import="com.yedam.vo.BoardVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<jsp:include page="../includes/header.jsp"></jsp:include>
+<script>
+SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+String wdate = sdf.format(${boardvo.updateDate});
+</script>
+
 <h3>상세페이지(board.jsp)</h3>
 
 <table class="table">
@@ -16,7 +21,9 @@
 	</tr>
 	<tr>
 		<th>제목</th>
-		<td colspan="3">${boardvo.title }</td>
+		<td>${boardvo.title }</td>
+		<th>작성자</th>
+		<td>${boardvo.writer }</td>
 	</tr>
 	<tr>
 		<th>내용</th>
@@ -25,12 +32,12 @@
 		</td>
 	</tr>
 	<tr>
-		<th>작성자</th>
-		<td colspan="3">${boardvo.writer }</td>
+		<th>img</th>
+		<td colspan="3"><img src="images/${boardvo.img }" width="100px"></td>
 	</tr>
 	<tr>
 		<th>작성일시</th>
-		<td colspan="3">${boardvo.writeDate }</td>
+		<td colspan="3">${boardvo.updateDate}</td>
 	</tr>
 	<tr>
 		<td colspan="4" align="center">
@@ -40,14 +47,13 @@
 	</tr>
 </table>
 
-<jsp:include page="../includes/footer.jsp"></jsp:include>
 
 <script>
 	document.querySelector('input[value="수정"]').addEventListener('click', function(e) {
-		location.href = "modifyBoard.do?searchCondition=" + ${searchCondition } + "&keyword=" + ${keyword } + "&page=" + ${page } + "&bno=" + ${boardvo.boardNo };
+		location.href = "modifyBoard.do?searchCondition=${searchCondition }&keyword=${keyword }&page=${page }&bno=${boardvo.boardNo }";
 	});
 	
 	document.querySelector('input[value="삭제"]').addEventListener('click', function(e) {
-		location.href = "deleteBoard.do?searchCondition=" + ${searchCondition } + "&keyword=" + ${keyword } + "&page=" + ${page } + "&bno=" + ${boardvo.boardNo };
+		location.href = "deleteBoard.do?searchCondition=${searchCondition }&keyword=${keyword }&page=${page }&bno=${boardvo.boardNo }";
 	});
 </script>

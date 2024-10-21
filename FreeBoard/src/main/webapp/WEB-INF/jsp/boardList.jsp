@@ -7,8 +7,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<jsp:include page="../includes/header.jsp"></jsp:include>
-
 <h3>글목록(boardLilst.jsp)</h3>
 
 <form action="boardList.do" class="row g-3">
@@ -100,5 +98,3 @@
 		</c:choose>
 	</ul>
 </nav>
-
-<jsp:include page="../includes/footer.jsp"></jsp:include>

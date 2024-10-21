@@ -17,7 +17,7 @@ public class LogOutControl implements Control {
 		HttpSession session = req.getSession();
 		session.invalidate();
 		
-		req.getRequestDispatcher("WEB-INF/jsp/loginForm.jsp").forward(req, resp);
+		req.getRequestDispatcher("WEB-INF/jsp/logForm.jsp").forward(req, resp);
 	}
 
 }

@@ -30,7 +30,7 @@ public class DeleteBoardControl implements Control {
 			
 			req.setAttribute("boardvo", board);
 			req.setAttribute("page", page);
-			req.getRequestDispatcher("WEB-INF/jsp/deleteForm.jsp").forward(req, resp);
+			req.getRequestDispatcher("board/deleteForm.tiles").forward(req, resp);
 
 			
 		} else if(req.getMethod().equals("POST")) {
@@ -45,7 +45,7 @@ public class DeleteBoardControl implements Control {
 
 				req.setAttribute("boardvo", board);
 				req.setAttribute("msg", "삭제 실패");
-				req.getRequestDispatcher("WEB-INF/jsp/deleteForm.jsp").forward(req, resp);
+				req.getRequestDispatcher("board/deleteForm.tiles").forward(req, resp);
 			}
 			
 		}

@@ -6,6 +6,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.yedam.common.Control;
 import com.yedam.service.BoardService;
 import com.yedam.service.BoardServiceImpl;
@@ -15,8 +17,9 @@ public class ModifyBoardControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// GET: 수정화면, POST: 수정처리
 		req.setCharacterEncoding("utf-8");
+		
+		// GET: 수정화면, POST: 수정처리
 		String bno = req.getParameter("bno");
 		String page = req.getParameter("page");
 		String sc = req.getParameter("searchCondition");
