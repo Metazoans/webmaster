@@ -5,11 +5,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<script>
-SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-String wdate = sdf.format(${boardvo.updateDate});
-</script>
-
 <h3>상세페이지(board.jsp)</h3>
 
 <table class="table">
@@ -47,6 +42,19 @@ String wdate = sdf.format(${boardvo.updateDate});
 	</tr>
 </table>
 
+<!-- 댓글 관련 -->
+<table id="replyList" class="table">
+	<thead>
+		<tr>
+			<th>댓글번호</th>
+			<th>내용</th>
+			<th>작성자</th>
+		</tr>
+	</thead>
+	<tbody>
+	
+	</tbody>
+</table>
 
 <script>
 	document.querySelector('input[value="수정"]').addEventListener('click', function(e) {
@@ -57,3 +65,8 @@ String wdate = sdf.format(${boardvo.updateDate});
 		location.href = "deleteBoard.do?searchCondition=${searchCondition }&keyword=${keyword }&page=${page }&bno=${boardvo.boardNo }";
 	});
 </script>
+
+<script src="js/replyService.js"></script>
+<script src="js/reply.js"></script>
+
+

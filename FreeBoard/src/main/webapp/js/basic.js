@@ -1,6 +1,7 @@
 /**
  * basic.js
  */
+
 console.log("basic.js")
 
 let name = "홍길동";	// string
