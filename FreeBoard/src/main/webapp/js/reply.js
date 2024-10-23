@@ -161,7 +161,7 @@ function deleteRow(e) {
 					createPageList;
 					console.log(page);
 					console.log(result.totalCount);
-					if((result.totalCount / 5) < page){
+					if(result.totalCount % 5 == 0 && (result.totalCount / 5) < page){
 						page--;
 						showList();
 						svc.getReplyCount(bno, createPageList, err => console.log(err));
