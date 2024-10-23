@@ -155,9 +155,18 @@ function deleteRow(e) {
 				alert('정상 처리');
 				e.target.parentElement.parentElement.remove();
 				
-				page = 1;
 				showList();
-				svc.getReplyCount(bno, createPageList, err => console.log(err));
+
+				svc.getReplyCount(bno, result => {
+					createPageList;
+					console.log(page);
+					console.log(result.totalCount);
+					if((result.totalCount / 5) < page){
+						page--;
+						showList();
+						svc.getReplyCount(bno, createPageList, err => console.log(err));
+					}
+				}, err => console.log(err));
 				
 			} else if(result.retCode == 'FAIL') {
 				alert('처리중 예외');

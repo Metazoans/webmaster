@@ -25,7 +25,7 @@ public class AppTest {
 		
 		svc.addReply(reply);
 		
-		List<ReplyVO> list = svc.replyList(160);
+		List<ReplyVO> list = svc.replyList(160, 1);
 		for(ReplyVO rvo : list) System.out.println(rvo.toString());
 		
 		
