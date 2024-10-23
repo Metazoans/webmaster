@@ -13,9 +13,14 @@ public class ReplyServiceImpl implements ReplyService {
 	SqlSession sqlSession = DataSource.getInstance().openSession(true);
 	ReplyMapper mapper = sqlSession.getMapper(ReplyMapper.class);
 	
+//	@Override
+//	public int listCnt(int boardNo) {
+//		return mapper.selectList(boardNo).size();
+//	}
+	
 	@Override
-	public List<ReplyVO> replyList(int boardNo) {
-		return mapper.selectList(boardNo);
+	public List<ReplyVO> replyList(int boardNo, int page) {
+		return mapper.selectListPaging(boardNo, page);
 	}
 
 	@Override
@@ -33,4 +38,8 @@ public class ReplyServiceImpl implements ReplyService {
 		return mapper.selectReply(replyNo);
 	}
 
+	@Override
+	public int replyCount(int boardNo) {
+		return mapper.selectCount(boardNo);
+	}
 }
