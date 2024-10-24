@@ -59,6 +59,8 @@
 	  	    				})
 	  	  				} else if(result.retCode == 'FAIL') {
 	  	  					alert('스케쥴 입력 실패');
+	  	  				} else if(result.retCode == 'REPET'){
+	  	  					alert('중복 입력');
 	  	  				} else {
 	  	  					alert('오류');
 	  	  				}

@@ -32,7 +32,8 @@ public class AddEventCont implements Control {
 		CalenderService svc = new CalenderServiceImpl();
 		
 		if(svc.searchSchedule(cvo) != null) {
-			resp.getWriter().print("{\"retCode\": \"\"}");
+			resp.getWriter().print("{\"retCode\": \"REPET\"}");
+			return;
 		}
 		
 		if(svc.addSchedule(cvo))
