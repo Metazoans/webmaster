@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yedam.mapper.CalenderMapper">
+	<select id="scheduleData" resultType="hashmap">
+		select title as "title", start_date as "start", end_date as "end"
+		from tbl_event
+	</select>
+	
+	<insert id="insertSchedule" parameterType="calender">
+		insert into tbl_event(title, start_date, end_date)
+		values(#{title}, #{startDate}, #{endDate})
+	</insert>
+	
+	<delete id="deleteSchedule" parameterType="calender">
+		delete from tbl_event 
+		where title=#{title} 
+		and start_date=#{startDate} 
+		and end_date=#{endDate}
+	</delete>
+	
+	
+	<!-- 단건 조회 -->
+	<select id="selectSchedule" parameterType="calender" resultType="calender">
+		select title, start_date, end_date
+		from tbl_event
+		where title=#{title} 
+		and start_date=#{startDate} 
+		and end_start=#{endDate}
+	</select>
+</mapper>
