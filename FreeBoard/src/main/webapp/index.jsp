@@ -6,7 +6,7 @@
 
 	<!-- MVC 디자인: View(JSP페이지) , Model(DB처리) , 컨트롤 -->
 	<!-- Expression Language : EL -->
-	<!-- jsp action tag -->
+	<!-- JSP action tag -->
 	<!-- JSP Standard Tag Library : JSTL -->
 	<p>${logId }</p>
 	<c:set var="name" value="Hong"></c:set>

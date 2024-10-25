@@ -6,14 +6,14 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 
 import com.yedam.common.DataSource;
-import com.yedam.mapper.CalenderMapper;
+import com.yedam.mapper.CalendarMapper;
 import com.yedam.mapper.MemberMapper;
-import com.yedam.vo.CalenderVO;
+import com.yedam.vo.CalendarVO;
 
-public class CalenderServiceImpl implements CalenderService {
+public class CalendarServiceImpl implements CalendarService {
 
 	SqlSession sqlSession = DataSource.getInstance().openSession(true);
-	CalenderMapper mapper = sqlSession.getMapper(CalenderMapper.class);
+	CalendarMapper mapper = sqlSession.getMapper(CalendarMapper.class);
 	
 	@Override
 	public List<Map<String, Object>> scheduleList() {
@@ -21,17 +21,17 @@ public class CalenderServiceImpl implements CalenderService {
 	}
 	
 	@Override
-	public boolean addSchedule(CalenderVO cvo) {
+	public boolean addSchedule(CalendarVO cvo) {
 		return mapper.insertSchedule(cvo) == 1;
 	}
 	
 	@Override
-	public boolean removeSchedule(CalenderVO cvo) {
+	public boolean removeSchedule(CalendarVO cvo) {
 		return mapper.deleteSchedule(cvo) == 1;
 	}
 	
 	@Override
-	public CalenderVO searchSchedule(CalenderVO cvo) {
+	public CalendarVO searchSchedule(CalendarVO cvo) {
 		return mapper.selectSchedule(cvo);
 	}
 	

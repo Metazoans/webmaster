@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    document.addEventListener('DOMContentLoaded', function (e) {
+      createCalender(document.querySelector('#list'));
+    })
+
+    // 달력생성함수.
+    function createCalender(target) {
+    	let year = 2024;
+    	let month = 9;
+    	let date = new Date(year, month);
+    	let day = date.getDay();
+    	
+    	let date1, date2;
+    	if(month-1 >= 0) {
+    		date1 = new Date(year, month-1);
+    	} else {
+    		date1 = new Date(year-1, 12);
+    	}
+    	if(month+1 <= 11) {
+    		date2 = new Date(year, month+1);
+    	} else {
+    		date2 = new Date(year+1, 0);
+    	}
+    	console.log(date1.getDate());
+    	
+      let tr = document.createElement('tr');
+      for(let i = 0; i < day; i++) {
+    	  let td = document.createElement('td');
+    	  td.innerHTML = '';
+    	  td.setAttribute("style", "border:none");
+    	  tr.appendChild(td);
+      }
+      for (let d = 1; d <= 31; d++) {
+        let td = document.createElement('td');
+        td.innerHTML = d;
+        tr.appendChild(td);
+        if ((d + day) % 7 == 0) {
+          document.querySelector('#list').appendChild(tr);
+          tr = document.createElement('tr'); // 토요일(7번 td를 생성하면)이 되면 tr을 새롭게 생성.
+        }
+      }
+      target.appendChild(tr);
+    }
+  </script>
+</head>
+
+<body>
+
+  <div id="show">
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Sun</th>
+          <th>Mon</th>
+          <th>Tue</th>
+          <th>Wed</th>
+          <th>Thr</th>
+          <th>Fri</th>
+          <th>Sat</th>
+        </tr>
+      </thead>
+      <tbody id="list"></tbody>
+    </table>
+
+  </div>
+
+</body>
+
+</html>

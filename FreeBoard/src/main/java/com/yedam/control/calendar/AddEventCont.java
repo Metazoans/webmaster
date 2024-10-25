@@ -1,4 +1,4 @@
-package com.yedam.control.calender;
+package com.yedam.control.calendar;
 
 import java.io.IOException;
 
@@ -7,11 +7,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.common.Control;
-import com.yedam.service.CalenderService;
-import com.yedam.service.CalenderServiceImpl;
-import com.yedam.vo.CalenderVO;
+import com.yedam.service.CalendarService;
+import com.yedam.service.CalendarServiceImpl;
+import com.yedam.vo.CalendarVO;
 
-public class RemoveEventCont implements Control {
+public class AddEventCont implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -21,16 +21,26 @@ public class RemoveEventCont implements Control {
 		String start = req.getParameter("start");
 		String end = req.getParameter("end");
 		
-		CalenderVO cvo = new CalenderVO();
+		if(start.length() > 20) start = start.substring(0, 19);
+		if(end.length() > 20) end = end.substring(0, 19);
+		
+		CalendarVO cvo = new CalendarVO();
 		cvo.setTitle(title);
 		cvo.setStartDate(start);
 		cvo.setEndDate(end);
 		
-		CalenderService svc = new CalenderServiceImpl();
-		if(svc.removeSchedule(cvo))
+		CalendarService svc = new CalendarServiceImpl();
+		
+		if(svc.searchSchedule(cvo) != null) {
+			resp.getWriter().print("{\"retCode\": \"REPET\"}");
+			return;
+		}
+		
+		if(svc.addSchedule(cvo))
 			resp.getWriter().print("{\"retCode\": \"OK\"}");
 		else
 			resp.getWriter().print("{\"retCode\": \"FAIL\"}");
+		
 	}
 
 }

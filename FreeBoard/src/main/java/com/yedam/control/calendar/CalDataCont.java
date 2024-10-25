@@ -1,4 +1,4 @@
-package com.yedam.control.calender;
+package com.yedam.control.calendar;
 
 import java.io.IOException;
 import java.util.List;
@@ -13,8 +13,8 @@ import com.google.gson.GsonBuilder;
 import com.yedam.common.Control;
 import com.yedam.service.BoardService;
 import com.yedam.service.BoardServiceImpl;
-import com.yedam.service.CalenderService;
-import com.yedam.service.CalenderServiceImpl;
+import com.yedam.service.CalendarService;
+import com.yedam.service.CalendarServiceImpl;
 
 public class CalDataCont implements Control {
 
@@ -22,7 +22,7 @@ public class CalDataCont implements Control {
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/json;charset=utf-8");
 		
-		CalenderService svc = new CalenderServiceImpl();
+		CalendarService svc = new CalendarServiceImpl();
 		List<Map<String, Object>> result = svc.scheduleList();
 		
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();

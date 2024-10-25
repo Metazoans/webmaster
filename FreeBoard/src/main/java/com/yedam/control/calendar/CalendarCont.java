@@ -1,4 +1,4 @@
-package com.yedam.control.calender;
+package com.yedam.control.calendar;
 
 import java.io.IOException;
 
@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.common.Control;
 
-public class CalenderCont implements Control {
+public class CalendarCont implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

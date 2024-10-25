@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yedam.mapper.CalenderMapper">
+<mapper namespace="com.yedam.mapper.CalendarMapper">
 	<select id="scheduleData" resultType="hashmap">
 		select title as "title", start_date as "start", end_date as "end"
 		from tbl_event
 	</select>
 	
-	<insert id="insertSchedule" parameterType="calender">
+	<insert id="insertSchedule" parameterType="calendar">
 		insert into tbl_event(title, start_date, end_date)
 		values(#{title}, #{startDate}, #{endDate})
 	</insert>
 	
-	<delete id="deleteSchedule" parameterType="calender">
+	<delete id="deleteSchedule" parameterType="calendar">
 		delete from tbl_event 
 		where title=#{title} 
 		and start_date=#{startDate} 
@@ -20,7 +20,7 @@
 	
 	
 	<!-- 단건 조회 -->
-	<select id="selectSchedule" parameterType="calender" resultType="calender">
+	<select id="selectSchedule" parameterType="calendar" resultType="calendar">
 		select title, start_date, end_date
 		from tbl_event
 		where title=#{title} 

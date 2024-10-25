@@ -36,7 +36,7 @@
                     </c:choose>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="javascript.do">자바스크립트 연습</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="chart.do">차트</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="calender.do">달력</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="calendar.do">달력</a>
                 </div>
             </div>
             <!-- Page content wrapper-->

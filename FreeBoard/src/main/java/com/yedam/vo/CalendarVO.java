@@ -3,7 +3,7 @@ package com.yedam.vo;
 import lombok.Data;
 
 @Data
-public class CalenderVO {
+public class CalendarVO {
 	private String title;
 	private String startDate;
 	private String endDate;
