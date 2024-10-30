@@ -4,7 +4,7 @@
 
 <jsp:include page="./WEB-INF/includes/header.jsp"></jsp:include>
 
-	<h1>branch test1</h1>
+	<h1>branch test222</h1>
 
 	<!-- MVC 디자인: View(JSP페이지) , Model(DB처리) , 컨트롤 -->
 	<!-- Expression Language : EL -->
